@@ -12,11 +12,21 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var persistentContainer: NSPersistentContainer!
+    lazy var persistentContainer: NSPersistentContainer = {
+        
+        let container = NSPersistentContainer(name: "Notes")
+        
+        container.loadPersistentStores { (_, error) in
+            guard error == nil else {
+                fatalError("Failed to load persistent store: \(error!.localizedDescription)")
+            }
+        }
+        
+        return container
+        
+    }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-                
         return true
     }
 
