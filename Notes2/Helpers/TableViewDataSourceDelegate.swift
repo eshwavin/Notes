@@ -13,5 +13,5 @@ protocol TableViewDataSourceDelegate: class {
 //    associatedtype Object: NSFetchRequestResult
     associatedtype Cell: UITableViewCell
 //    func configure(_ cell: Cell, for object: Object)
-    func configure(_ cell: Cell, for note: (title: String, contents: String))
+    func configure(_ cell: Cell, for folder: String)
 }

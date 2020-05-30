@@ -7,71 +7,78 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Detail View Controller-->
+        <!--Notes View Controller-->
         <scene sceneID="eaN-DW-RmT">
             <objects>
-                <viewController id="VNt-YC-Lc7" customClass="DetailViewController" customModule="Notes2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="VNt-YC-Lc7" customClass="NotesViewController" customModule="Notes2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mLJ-ef-dzC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cbH-7c-LwS">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PXf-am-kfG">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="notesCell" id="ndj-3v-eSm">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ndj-3v-eSm" id="zfp-3j-fbW">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="IpU-pN-v8n" kind="show" identifier="showNote" id="xWv-vZ-T3F"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="gYA-sO-R4K" firstAttribute="bottom" secondItem="cbH-7c-LwS" secondAttribute="bottom" id="aJY-vh-YQF"/>
-                            <constraint firstItem="cbH-7c-LwS" firstAttribute="leading" secondItem="gYA-sO-R4K" secondAttribute="leading" id="duz-k2-sdN"/>
-                            <constraint firstItem="gYA-sO-R4K" firstAttribute="trailing" secondItem="cbH-7c-LwS" secondAttribute="trailing" id="gEJ-7P-OZO"/>
-                            <constraint firstItem="cbH-7c-LwS" firstAttribute="top" secondItem="gYA-sO-R4K" secondAttribute="top" id="wkN-Um-S1s"/>
+                            <constraint firstItem="PXf-am-kfG" firstAttribute="top" secondItem="gYA-sO-R4K" secondAttribute="top" id="8yX-I1-3c5"/>
+                            <constraint firstItem="PXf-am-kfG" firstAttribute="leading" secondItem="gYA-sO-R4K" secondAttribute="leading" id="ZOe-wm-4mD"/>
+                            <constraint firstItem="gYA-sO-R4K" firstAttribute="trailing" secondItem="PXf-am-kfG" secondAttribute="trailing" id="mgJ-ut-MGb"/>
+                            <constraint firstItem="gYA-sO-R4K" firstAttribute="bottom" secondItem="PXf-am-kfG" secondAttribute="bottom" id="vBw-9i-gSe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gYA-sO-R4K"/>
                     </view>
                     <navigationItem key="navigationItem" id="vTT-7s-Xua"/>
-                    <connections>
-                        <outlet property="textView" destination="cbH-7c-LwS" id="T6n-HP-gQ2"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xEG-sZ-LHn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1454" y="394"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="6nJ-6q-PNL">
+            <objects>
+                <viewController id="IpU-pN-v8n" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xce-pH-9i9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="LkX-Bm-CWH"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="eaP-8Z-yqp"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h1m-m0-rtb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2377" y="394"/>
+        </scene>
         <!--Notes-->
         <scene sceneID="xxq-UL-13O">
             <objects>
-                <tableViewController clearsSelectionOnViewWillAppear="NO" id="Pa2-Hq-Fif" customClass="MasterViewController" customModule="Notes2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="Pa2-Hq-Fif" customClass="FoldersViewController" customModule="Notes2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0Wl-nJ-gAL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="notesMasterCell" textLabel="alq-n4-iNC" detailTextLabel="sHl-EJ-V2E" rowHeight="54" style="IBUITableViewCellStyleSubtitle" id="x8o-aK-nNR" customClass="NotesTableViewCell" customModule="Notes2" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="folderCell" rowHeight="54" id="x8o-aK-nNR" customClass="NotesTableViewCell" customModule="Notes2" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="54"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="x8o-aK-nNR" id="UTW-Vq-vEm">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="54"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="alq-n4-iNC">
-                                            <rect key="frame" x="20" y="7" width="41.5" height="26.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="sHl-EJ-V2E">
-                                            <rect key="frame" x="20" y="33.5" width="44" height="14.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="22w-ym-aI6" kind="show" identifier="showDetail" id="Th3-1O-kQi"/>
@@ -83,7 +90,13 @@
                             <outlet property="delegate" destination="Pa2-Hq-Fif" id="Wgc-NA-9g7"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Notes" id="6rH-K9-GmI"/>
+                    <navigationItem key="navigationItem" title="Notes" id="6rH-K9-GmI">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="ogc-En-mPR">
+                            <connections>
+                                <action selector="addFolder:" destination="Pa2-Hq-Fif" id="S1S-Te-XQA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HUd-7y-Lqe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -141,4 +154,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="Th3-1O-kQi"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
+    </resources>
 </document>

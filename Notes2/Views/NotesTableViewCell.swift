@@ -21,10 +21,8 @@ class NotesTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func configure(for note: (title: String, contents: String)) {
-        textLabel?.text = note.title
-        detailTextLabel?.text = note.contents
-        detailTextLabel?.numberOfLines = 3
+    func configure(for folder: String) {
+        textLabel?.text = folder
     }
     
 }

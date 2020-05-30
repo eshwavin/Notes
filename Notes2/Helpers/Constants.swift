@@ -9,5 +9,10 @@
 import Foundation
 
 enum CellIdentifiers: String {
-    case notesMasterCell = "notesMasterCell"
+    case notesMasterCell = "folderCell"
+}
+
+enum Segues: String {
+    case foldersToNotes = "showDetail"
+    case notesToNote = "showNote"
 }

@@ -8,9 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
-    
-    @IBOutlet weak var textView: UITextView!
+class NotesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

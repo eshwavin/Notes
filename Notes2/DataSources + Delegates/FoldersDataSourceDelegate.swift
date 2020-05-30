@@ -9,13 +9,9 @@
 import UIKit
 import CoreData
 
-class NotesDataSource<Delegate: TableViewDataSourceDelegate>: NSObject, UITableViewDataSource {
+class FoldersDataSourceDelegate<Delegate: TableViewDataSourceDelegate>: NSObject, UITableViewDataSource, UITableViewDelegate {
     
-    let notes = [[(title: "Title1", contents: "hksfsafv bjjhsfk lfhk asfh"),
-                (title: "Title2", contents: "hksfsafv bjjhsfk lfhk asfh"),
-                (title: "Title3", contents: "hksfsafv bjjhsfk lfhk asfh"),
-                (title: "Title4", contents: "hksfsafv bjjhsfk lfhk asfh")
-            ]]
+    let folders = [["Folder 1", "Folder2", "Folder3"]]
     
     private let tableView: UITableView
     private weak var delegate: Delegate?
@@ -31,17 +27,18 @@ class NotesDataSource<Delegate: TableViewDataSourceDelegate>: NSObject, UITableV
         super.init()
         
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.reloadData()
     }
     
     // MARK: TableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return notes.count
+        return folders.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return notes[section].count
+        return folders[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -49,13 +46,18 @@ class NotesDataSource<Delegate: TableViewDataSourceDelegate>: NSObject, UITableV
             fatalError("Unexpected Cell Type at \(indexPath)")
         }
         
-        let note = notes[indexPath.section][indexPath.row]
+        let folder = folders[indexPath.section][indexPath.row]
         
-        delegate?.configure(cell, for: note)
+        delegate?.configure(cell, for: folder)
         
         return cell
     }
     
+    // MARK: TableViewDelegate
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
 }
-
 

@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let splitViewController = window?.rootViewController as? UISplitViewController else { return }
 
         let masterNavigationController = splitViewController.viewControllers.first as! UINavigationController
-        let masterViewController = masterNavigationController.viewControllers.first as! MasterViewController
+        let masterViewController = masterNavigationController.viewControllers.first as! FoldersViewController
         masterViewController.managedObjectContext = ((UIApplication.shared.delegate) as? AppDelegate)?.persistentContainer.viewContext
 
     }
