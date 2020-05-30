@@ -9,15 +9,19 @@
 import UIKit
 import CoreData
 
-class FoldersViewController: UITableViewController {
+class FoldersViewController: UITableViewController, SegueHandler {
 
     private var dataSource: FoldersDataSourceDelegate<FoldersViewController>?
     
     var managedObjectContext: NSManagedObjectContext!
     
-    // MARK: Alert
+    enum SegueIdentifier: String {
+        case showNotes = "showNotes"
+    }
     
-    var createNewFolderAlert: UIAlertController {
+    // MARK: Alerts
+    
+    lazy var createNewFolderAlert: UIAlertController = {
         let alert = UIAlertController(title: "New Folder", message: "Enter a name for the new folder", preferredStyle: .alert)
         alert.addTextField {
             $0.placeholder = "Name"
@@ -41,13 +45,15 @@ class FoldersViewController: UITableViewController {
         alert.addAction(saveAction)
         
         return alert
-    }
+    }()
     
-    var errorAlert: UIAlertController {
+    lazy var errorAlert: UIAlertController = {
         let alert = UIAlertController(title: "Name Taken", message: "Please choose a different name", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         return alert
-    }
+    }()
+    
+    // MARK: Setup
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,9 +87,19 @@ class FoldersViewController: UITableViewController {
         return true
     }
     
+    // MARK: Segue
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        switch segueIdentifier(for: segue){
+        case .showNotes:
+            ()
+        }
+    }
     
 }
+
+// MARK: TableViewDataSourceDelegate
 
 extension FoldersViewController: TableViewDataSourceDelegate {
     func configure(_ cell: NotesTableViewCell, for folder: String) {

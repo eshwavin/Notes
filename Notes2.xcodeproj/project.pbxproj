@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		113A72BB2482351200A332A5 /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113A72BA2482351200A332A5 /* Folder.swift */; };
+		113A72BD2482400100A332A5 /* SegueHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113A72BC2482400100A332A5 /* SegueHandler.swift */; };
 		11871F15247B66FA0014F9CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11871F14247B66FA0014F9CB /* AppDelegate.swift */; };
 		11871F17247B66FA0014F9CB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11871F16247B66FA0014F9CB /* SceneDelegate.swift */; };
 		11871F19247B66FA0014F9CB /* FoldersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11871F18247B66FA0014F9CB /* FoldersViewController.swift */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		113A72BA2482351200A332A5 /* Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
+		113A72BC2482400100A332A5 /* SegueHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueHandler.swift; sourceTree = "<group>"; };
 		11871F11247B66FA0014F9CB /* Notes2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11871F14247B66FA0014F9CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11871F16247B66FA0014F9CB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,7 +114,7 @@
 		11871F39247E2F260014F9CB /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				11871F2A247E15FE0014F9CB /* TableViewDataSourceDelegate.swift */,
+				113A72BC2482400100A332A5 /* SegueHandler.swift */,
 				11871F2E247E1D5F0014F9CB /* Constants.swift */,
 			);
 			path = Helpers;
@@ -129,6 +131,7 @@
 		11871F3D248228BF0014F9CB /* DataSources + Delegates */ = {
 			isa = PBXGroup;
 			children = (
+				11871F2A247E15FE0014F9CB /* TableViewDataSourceDelegate.swift */,
 				11871F2C247E16390014F9CB /* FoldersDataSourceDelegate.swift */,
 			);
 			path = "DataSources + Delegates";
@@ -213,6 +216,7 @@
 				11871F33247E29250014F9CB /* CoreDataStack.swift in Sources */,
 				11871F17247B66FA0014F9CB /* SceneDelegate.swift in Sources */,
 				11871F2F247E1D600014F9CB /* Constants.swift in Sources */,
+				113A72BD2482400100A332A5 /* SegueHandler.swift in Sources */,
 				11871F2B247E15FE0014F9CB /* TableViewDataSourceDelegate.swift in Sources */,
 				11871F29247B67530014F9CB /* NotesViewController.swift in Sources */,
 				11871F31247E1E470014F9CB /* NotesTableViewCell.swift in Sources */,
