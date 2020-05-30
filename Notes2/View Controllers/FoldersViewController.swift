@@ -11,7 +11,7 @@ import CoreData
 
 class FoldersViewController: UITableViewController, SegueHandler {
 
-    private var dataSource: FoldersDataSourceDelegate<FoldersViewController>?
+    private var dataSource: TableViewDataSource<FoldersViewController>?
     
     var managedObjectContext: NSManagedObjectContext!
     
@@ -65,7 +65,7 @@ class FoldersViewController: UITableViewController, SegueHandler {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
         
-        dataSource = FoldersDataSourceDelegate(tableView: tableView, cellIdentifier: CellIdentifiers.notesMasterCell.rawValue, delegate: self)
+        dataSource = TableViewDataSource(tableView: tableView, cellIdentifier: CellIdentifiers.notesMasterCell.rawValue, delegate: self)
         
     }
     

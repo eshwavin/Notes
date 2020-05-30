@@ -9,7 +9,14 @@
 import UIKit
 import CoreData
 
-class FoldersDataSourceDelegate<Delegate: TableViewDataSourceDelegate>: NSObject, UITableViewDataSource, UITableViewDelegate {
+protocol TableViewDataSourceDelegate: class {
+//    associatedtype Object: NSFetchRequestResult
+    associatedtype Cell: UITableViewCell
+//    func configure(_ cell: Cell, for object: Object)
+    func configure(_ cell: Cell, for folder: String)
+}
+
+class TableViewDataSource<Delegate: TableViewDataSourceDelegate>: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     let folders = [["Folder 1", "Folder2", "Folder3"]]
     
@@ -22,7 +29,6 @@ class FoldersDataSourceDelegate<Delegate: TableViewDataSourceDelegate>: NSObject
     required init(tableView: UITableView, cellIdentifier: String, delegate: Delegate) {
         self.tableView = tableView
         self.cellIdentifier = cellIdentifier
-        self.delegate = delegate
         
         super.init()
         
@@ -51,12 +57,6 @@ class FoldersDataSourceDelegate<Delegate: TableViewDataSourceDelegate>: NSObject
         delegate?.configure(cell, for: folder)
         
         return cell
-    }
-    
-    // MARK: TableViewDelegate
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }
