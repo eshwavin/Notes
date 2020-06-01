@@ -23,7 +23,8 @@ class FoldersViewController: UITableViewController, SegueHandler {
     
     lazy var createNewFolderAlert: UIAlertController = {
         let alert = UIAlertController(title: "New Folder", message: "Enter a name for the new folder", preferredStyle: .alert)
-        alert.addTextField {
+        
+        alert.addTextField { [unowned self] in
             $0.placeholder = "Name"
             $0.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         }
@@ -65,7 +66,13 @@ class FoldersViewController: UITableViewController, SegueHandler {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
         
-        dataSource = TableViewDataSource(tableView: tableView, cellIdentifier: CellIdentifiers.notesMasterCell.rawValue, delegate: self)
+        let request = Folder.sortedFetchRequest
+        request.fetchBatchSize = 20
+        request.returnsObjectsAsFaults = false
+        
+        let fetchedRequestController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        dataSource = TableViewDataSource(tableView: tableView, cellIdentifier: CellIdentifiers.notesMasterCell.rawValue, fetchedResultsController: fetchedRequestController, delegate: self)
         
     }
     
@@ -84,7 +91,13 @@ class FoldersViewController: UITableViewController, SegueHandler {
     }
     
     private func createNewFolder(_ name: String) -> Bool {
-        return true
+        var isSuccess = false
+        
+        isSuccess = managedObjectContext.performChangesAndWait { [unowned self] in
+            _ = Folder.insert(into: self.managedObjectContext, for: name)
+        }
+        
+        return isSuccess
     }
     
     // MARK: Segue
@@ -102,8 +115,8 @@ class FoldersViewController: UITableViewController, SegueHandler {
 // MARK: TableViewDataSourceDelegate
 
 extension FoldersViewController: TableViewDataSourceDelegate {
-    func configure(_ cell: NotesTableViewCell, for folder: String) {
-        cell.configure(for: folder)
+    func configure(_ cell: NotesTableViewCell, for object: Folder) {
+        cell.configure(for: object)
     }
 }
 

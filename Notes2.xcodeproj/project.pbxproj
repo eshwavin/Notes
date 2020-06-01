@@ -10,6 +10,7 @@
 		113A72BB2482351200A332A5 /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113A72BA2482351200A332A5 /* Folder.swift */; };
 		113A72BD2482400100A332A5 /* SegueHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113A72BC2482400100A332A5 /* SegueHandler.swift */; };
 		113A72C024824D7A00A332A5 /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113A72BF24824D7A00A332A5 /* Managed.swift */; };
+		113A72C22482674E00A332A5 /* NSManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113A72C12482674E00A332A5 /* NSManagedObjectContext+Extensions.swift */; };
 		11871F15247B66FA0014F9CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11871F14247B66FA0014F9CB /* AppDelegate.swift */; };
 		11871F17247B66FA0014F9CB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11871F16247B66FA0014F9CB /* SceneDelegate.swift */; };
 		11871F19247B66FA0014F9CB /* FoldersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11871F18247B66FA0014F9CB /* FoldersViewController.swift */; };
@@ -29,6 +30,7 @@
 		113A72BA2482351200A332A5 /* Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
 		113A72BC2482400100A332A5 /* SegueHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueHandler.swift; sourceTree = "<group>"; };
 		113A72BF24824D7A00A332A5 /* Managed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
+		113A72C12482674E00A332A5 /* NSManagedObjectContext+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Extensions.swift"; sourceTree = "<group>"; };
 		11871F11247B66FA0014F9CB /* Notes2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11871F14247B66FA0014F9CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11871F16247B66FA0014F9CB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				11871F32247E29250014F9CB /* CoreDataStack.swift */,
+				113A72C12482674E00A332A5 /* NSManagedObjectContext+Extensions.swift */,
 				113A72BF24824D7A00A332A5 /* Managed.swift */,
 			);
 			path = "Core Data Helpers";
@@ -217,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				113A72C024824D7A00A332A5 /* Managed.swift in Sources */,
+				113A72C22482674E00A332A5 /* NSManagedObjectContext+Extensions.swift in Sources */,
 				11871F19247B66FA0014F9CB /* FoldersViewController.swift in Sources */,
 				11871F36247E297B0014F9CB /* Notes.xcdatamodeld in Sources */,
 				11871F3C247E30470014F9CB /* SplitViewController.swift in Sources */,

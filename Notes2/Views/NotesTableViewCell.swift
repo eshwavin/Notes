@@ -21,8 +21,8 @@ class NotesTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func configure(for folder: String) {
-        textLabel?.text = folder
+    func configure(for folder: Folder) {
+        textLabel?.text = folder.name
     }
     
 }

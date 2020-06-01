@@ -10,6 +10,19 @@ import UIKit
 import CoreData
 
 final class Folder: NSManagedObject {
-    @NSManaged fileprivate(set) var date: Date
+    @NSManaged fileprivate(set) var dateModified: Date
     @NSManaged fileprivate(set) var name: String
+    
+    static func insert(into context: NSManagedObjectContext, for folderName: String) -> Folder {
+        let folder: Folder = context.insertObject()
+        folder.name = folderName
+        folder.dateModified = Date()
+        return folder
+    }
+}
+
+extension Folder: Managed {
+    static var defaultSortDescriptor: [NSSortDescriptor] {
+        return [NSSortDescriptor(key: #keyPath(dateModified), ascending: false)]
+    }
 }
