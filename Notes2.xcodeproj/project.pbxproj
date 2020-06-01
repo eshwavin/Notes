@@ -24,6 +24,7 @@
 		11871F33247E29250014F9CB /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11871F32247E29250014F9CB /* CoreDataStack.swift */; };
 		11871F36247E297B0014F9CB /* Notes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 11871F34247E297B0014F9CB /* Notes.xcdatamodeld */; };
 		11871F3C247E30470014F9CB /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11871F3B247E30470014F9CB /* SplitViewController.swift */; };
+		119518AA2484C55E00C415D9 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119518A92484C55D00C415D9 /* Note.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		11871F32247E29250014F9CB /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		11871F35247E297B0014F9CB /* Notes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Notes.xcdatamodel; sourceTree = "<group>"; };
 		11871F3B247E30470014F9CB /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
+		119518A92484C55D00C415D9 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 			children = (
 				11871F34247E297B0014F9CB /* Notes.xcdatamodeld */,
 				113A72BA2482351200A332A5 /* Folder.swift */,
+				119518A92484C55D00C415D9 /* Note.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				11871F19247B66FA0014F9CB /* FoldersViewController.swift in Sources */,
 				11871F36247E297B0014F9CB /* Notes.xcdatamodeld in Sources */,
 				11871F3C247E30470014F9CB /* SplitViewController.swift in Sources */,
+				119518AA2484C55E00C415D9 /* Note.swift in Sources */,
 				11871F15247B66FA0014F9CB /* AppDelegate.swift in Sources */,
 				11871F2D247E16390014F9CB /* TableViewDataSource.swift in Sources */,
 				11871F33247E29250014F9CB /* CoreDataStack.swift in Sources */,
@@ -308,7 +312,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -362,7 +366,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

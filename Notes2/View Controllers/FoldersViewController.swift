@@ -60,7 +60,6 @@ class FoldersViewController: UITableViewController, SegueHandler {
         super.viewDidLoad()
         setupTableView()
     }
-    
 
     private func setupTableView() {
         tableView.rowHeight = UITableView.automaticDimension
@@ -79,6 +78,10 @@ class FoldersViewController: UITableViewController, SegueHandler {
     // MARK: Add Folder
     
     @IBAction func addFolder(_ sender: UIBarButtonItem) {
+        
+        createNewFolderAlert.textFields?.first?.text = ""
+        createNewFolderAlert.actions.last?.isEnabled = false
+        
         self.present(createNewFolderAlert, animated: true, completion: nil)
     }
     

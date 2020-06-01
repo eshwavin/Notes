@@ -15,11 +15,11 @@ protocol TableViewDataSourceDelegate: class {
     func configure(_ cell: Cell, for object: Object)
 }
 
-class TableViewDataSource<Delegate: TableViewDataSourceDelegate>: NSObject, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+class TableViewDataSource<Delegate: TableViewDataSourceDelegate>: NSObject, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
     
     // MARK: Init Properties
     
-    private let tableView: UITableView
+    private weak var tableView: UITableView?
     private weak var delegate: Delegate?
     private let cellIdentifier: String
     private let fetchedResultsController: NSFetchedResultsController<Object>
@@ -44,12 +44,14 @@ class TableViewDataSource<Delegate: TableViewDataSourceDelegate>: NSObject, UITa
         self.fetchedResultsController = fetchedResultsController
         self.delegate = delegate
         
+        
         super.init()
         
         fetchedResultsController.delegate = self
         try! fetchedResultsController.performFetch()
         
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.reloadData()
     }
     
@@ -82,30 +84,30 @@ class TableViewDataSource<Delegate: TableViewDataSourceDelegate>: NSObject, UITa
     // MARK: NSFetchedResultsControllerDelegate
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
+        tableView?.beginUpdates()
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
             guard let newIndexPath = newIndexPath else { fatalError("newIndexPath is nil") }
-            tableView.insertRows(at: [newIndexPath], with: .fade)
+            tableView?.insertRows(at: [newIndexPath], with: .fade)
         
         case .update:
             guard let indexPath = indexPath else { fatalError("indexPath is nil ") }
             let object = objectAtIndexPath(indexPath)
-            guard let cell = tableView.cellForRow(at: indexPath) as? Cell else { break }
+            guard let cell = tableView?.cellForRow(at: indexPath) as? Cell else { break }
             delegate?.configure(cell, for: object)
             
         case .move:
             guard let indexPath = indexPath else { fatalError("indexPath is nil") }
             guard let newIndexPath = newIndexPath else { fatalError("newIndexPath is nil") }
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            tableView.insertRows(at: [newIndexPath], with: .fade)
+            tableView?.deleteRows(at: [indexPath], with: .fade)
+            tableView?.insertRows(at: [newIndexPath], with: .fade)
             
         case .delete:
             guard let indexPath = indexPath else { fatalError("indexPath is nil") }
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView?.deleteRows(at: [indexPath], with: .fade)
             
         @unknown default:
             fatalError("New case added")
@@ -113,7 +115,20 @@ class TableViewDataSource<Delegate: TableViewDataSourceDelegate>: NSObject, UITa
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
+        tableView?.endUpdates()
+    }
+    
+    // MARK: TableViewDelegate
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            guard let object = objectAtIndexPath(indexPath) as? NSManagedObject else { return }
+            
+            object.managedObjectContext?.performChanges {
+                object.managedObjectContext?.delete(object)
+            }
+        }
     }
     
 }
