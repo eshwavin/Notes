@@ -2,7 +2,7 @@
 //  NotesTableViewCell.swift
 //  Notes2
 //
-//  Created by Srivinayak Chaitanya Eshwa on 27/05/20.
+//  Created by Srivinayak Chaitanya Eshwa on 03/06/20.
 //  Copyright © 2020 Srivinayak Chaitanya Eshwa. All rights reserved.
 //
 
@@ -21,8 +21,10 @@ class NotesTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func configure(for folder: Folder) {
-        textLabel?.text = folder.name
+    func configure(for note: Note) {
+        textLabel?.text = note.title
+        detailTextLabel?.numberOfLines = 4
+        detailTextLabel?.text = note.content
     }
     
 }
