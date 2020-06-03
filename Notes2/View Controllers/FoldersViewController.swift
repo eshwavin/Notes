@@ -109,9 +109,15 @@ class FoldersViewController: UITableViewController, SegueHandler {
         
         switch segueIdentifier(for: segue){
         case .showNotes:
-            guard let viewController = segue.destination as? NotesViewController else {
+//            guard let viewController = segue.destination as? NotesViewController else {
+//                    fatalError("Wrong view controller")
+//            }
+            
+            guard let navigationController = segue.destination as? UINavigationController,
+                let viewController = navigationController.viewControllers.first as? NotesViewController else {
                     fatalError("Wrong view controller")
             }
+            
             guard let folder = dataSource?.selectedObject else {
                 fatalError("Wrong object type")
             }

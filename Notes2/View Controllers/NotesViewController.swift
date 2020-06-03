@@ -31,6 +31,7 @@ class NotesViewController: UIViewController, SegueHandler {
             guard let folder = notesSource.managedObject else { return }
             observer = ManagedObjectObserver(object: folder, changeHandler: { [unowned self] (type) in
                 guard type == .delete else { return }
+                self.invalidateView()
                 let _ = self.navigationController?.popViewController(animated: true)
             })
             setupView()
@@ -58,6 +59,14 @@ class NotesViewController: UIViewController, SegueHandler {
     }
     
     private func setupFetchedRequestController() {
+        
+        if notesSource == nil {
+            self.createNewNoteButton.isEnabled = false
+            return
+        }
+        
+        self.createNewNoteButton.isEnabled = true
+        
         let request = Note.sortedFetchRequest(with: notesSource.predicate)
         request.returnsObjectsAsFaults = false
         request.fetchBatchSize = 20
@@ -71,6 +80,11 @@ class NotesViewController: UIViewController, SegueHandler {
         if let name = (notesSource?.managedObject as? Folder)?.name {
             title = name
         }
+    }
+    
+    private func invalidateView() {
+        title = ""
+        createNewNoteButton.isEnabled = false
     }
     
     // MARK: Note Creation
@@ -92,13 +106,10 @@ class NotesViewController: UIViewController, SegueHandler {
         
         switch segueIdentifier(for: segue) {
         case .showNote:
-            guard let navigationController = segue.destination as? UINavigationController,
-                let viewController = navigationController.viewControllers.first as? NoteViewController else {
+
+            guard let viewController = segue.destination as? NoteViewController else {
                 fatalError("Wrong view controller type")
-            }            
-//            guard let viewController = segue.destination as? NoteViewController else {
-//                fatalError("Wrong view controller type")
-//            }
+            }
             if let note = dataSource.selectedObject {
                 viewController.note = note
             }
