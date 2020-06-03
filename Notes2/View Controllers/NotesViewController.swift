@@ -92,7 +92,8 @@ class NotesViewController: UIViewController, SegueHandler {
         
         switch segueIdentifier(for: segue) {
         case .showNote:
-            guard let viewController = segue.destination as? NoteViewController else {
+            guard let navigationController = segue.destination as? UINavigationController,
+                let viewController = navigationController.viewControllers.first as? NoteViewController else {
                 fatalError("Wrong view controller type")
             }
             if let note = dataSource.selectedObject {
