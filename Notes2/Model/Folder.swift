@@ -12,6 +12,9 @@ import CoreData
 final class Folder: NSManagedObject {
     @NSManaged fileprivate(set) var dateCreated: Date
     @NSManaged fileprivate(set) var name: String
+    @NSManaged fileprivate(set) var notes: Set<Note>
+    
+    @NSManaged fileprivate var primitiveDateCreated: Date
     
     static func insert(into context: NSManagedObjectContext, for folderName: String) -> Folder {
         let folder: Folder = context.insertObject()
@@ -19,6 +22,11 @@ final class Folder: NSManagedObject {
         folder.dateCreated = Date()
         return folder
     }
+    
+//    override func awakeFromInsert() {
+//        super.awakeFromInsert()
+//        primitiveDateCreated = Date()
+//    }
 }
 
 extension Folder: Managed {

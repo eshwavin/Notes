@@ -10,13 +10,15 @@ import CoreData
 
 extension NSManagedObjectContext {
     
+    /*
     // TODO: Check for cleaner code
     func insertUniqueObject<A: NSManagedObject>(with predicate: NSPredicate) -> A? where A: Managed {
         
-        let fetchRequest = NSFetchRequest<A>(entityName: A.entityName)
+        let fetchRequest = NSFetchRequest<NSNumber>(entityName: A.entityName)
         fetchRequest.predicate = predicate
+        fetchRequest.resultType = .countResultType
         
-        if (try! self.fetch(fetchRequest)).count > 0 {
+        if try! self.fetch(fetchRequest).first as! Int > 0 {
             return insertObject()
         }
         else {
@@ -24,7 +26,9 @@ extension NSManagedObjectContext {
         }
         
     }
-    
+    */
+ 
+ 
     // MARK: Insertion
     
     func insertObject<A: NSManagedObject>() -> A where A: Managed {
@@ -45,7 +49,7 @@ extension NSManagedObjectContext {
     }
     
     func performChanges(block: @escaping () -> ()) {
-        perform { [unowned self] in
+        perform {
             block()
             _ = self.saveOrRollBack()
         }
@@ -54,7 +58,7 @@ extension NSManagedObjectContext {
     func performChangesAndWait(block: @escaping () -> ()) -> Bool {
         var isSuccess = false
         
-        performAndWait { [unowned self] in
+        performAndWait {
             block()
             isSuccess = self.saveOrRollBack()
         }

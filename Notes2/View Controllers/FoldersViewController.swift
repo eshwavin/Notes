@@ -71,7 +71,7 @@ class FoldersViewController: UITableViewController, SegueHandler {
         
         let fetchedRequestController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         
-        dataSource = TableViewDataSource(tableView: tableView, cellIdentifier: CellIdentifiers.notesMasterCell.rawValue, fetchedResultsController: fetchedRequestController, delegate: self)
+        dataSource = TableViewDataSource(tableView: tableView, cellIdentifier: CellIdentifiers.folderCell.rawValue, fetchedResultsController: fetchedRequestController, delegate: self)
         
     }
     
@@ -109,7 +109,11 @@ class FoldersViewController: UITableViewController, SegueHandler {
         
         switch segueIdentifier(for: segue){
         case .showNotes:
-            ()
+            guard let navigationController = segue.destination as? UINavigationController,
+                let viewController = navigationController.viewControllers.first as? NotesViewController else {
+                    fatalError("Wrong view controller")
+            }
+            viewController.managedObjectContext = managedObjectContext
         }
     }
     
@@ -118,7 +122,7 @@ class FoldersViewController: UITableViewController, SegueHandler {
 // MARK: TableViewDataSourceDelegate
 
 extension FoldersViewController: TableViewDataSourceDelegate {
-    func configure(_ cell: NotesTableViewCell, for object: Folder) {
+    func configure(_ cell: FolderTableViewCell, for object: Folder) {
         cell.configure(for: object)
     }
 }

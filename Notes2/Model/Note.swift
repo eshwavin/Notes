@@ -10,15 +10,16 @@ import UIKit
 import CoreData
 
 final class Note: NSManagedObject {
-    @NSManaged fileprivate(set) var content: String
-    @NSManaged fileprivate(set) var dateModified: Date
-    @NSManaged fileprivate(set) var title: String
     
-    static func insert(into context: NSManagedObjectContext) -> Note {
+    @NSManaged var content: String
+    @NSManaged var dateModified: Date
+    @NSManaged var title: String
+    @NSManaged private(set) var folder: Folder
+    
+    static func insert(into context: NSManagedObjectContext, in folder: Folder) -> Note {
         let note: Note = context.insertObject()
-        note.title = ""
         note.dateModified = Date()
-        note.content = ""
+        note.folder = folder
         return note
     }
     

@@ -43,6 +43,9 @@
                         <viewLayoutGuide key="safeArea" id="gYA-sO-R4K"/>
                     </view>
                     <navigationItem key="navigationItem" id="vTT-7s-Xua"/>
+                    <connections>
+                        <outlet property="tableView" destination="PXf-am-kfG" id="vHz-pz-DSZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xEG-sZ-LHn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -73,7 +76,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="folderCell" rowHeight="54" id="x8o-aK-nNR" customClass="NotesTableViewCell" customModule="Notes2" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="folderCell" rowHeight="54" id="x8o-aK-nNR" customClass="FolderTableViewCell" customModule="Notes2" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="54"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="x8o-aK-nNR" id="UTW-Vq-vEm">

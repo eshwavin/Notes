@@ -3,15 +3,15 @@
     <entity name="Folder" representedClassName=".Folder" syncable="YES">
         <attribute name="dateCreated" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String"/>
-        <relationship name="notes" toMany="YES" deletionRule="Nullify" destinationEntity="Note" inverseName="folder" inverseEntity="Note"/>
+        <relationship name="notes" toMany="YES" deletionRule="Cascade" destinationEntity="Note" inverseName="folder" inverseEntity="Note"/>
         <fetchIndex name="bydateCreatedIndex">
             <fetchIndexElement property="dateCreated" type="Binary" order="ascending"/>
         </fetchIndex>
     </entity>
     <entity name="Note" representedClassName="Note" syncable="YES">
-        <attribute name="content" optional="YES" attributeType="String"/>
+        <attribute name="content" optional="YES" attributeType="String" defaultValueString=""/>
         <attribute name="dateModified" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String" defaultValueString=""/>
         <relationship name="folder" maxCount="1" deletionRule="Nullify" destinationEntity="Folder" inverseName="notes" inverseEntity="Folder"/>
         <fetchIndex name="bydateModifiedIndex">
             <fetchIndexElement property="dateModified" type="Binary" order="ascending"/>
