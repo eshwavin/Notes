@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-final class Folder: NSManagedObject {
+class Folder: NSManagedObject {
     @NSManaged fileprivate(set) var dateCreated: Date
     @NSManaged fileprivate(set) var name: String
     @NSManaged fileprivate(set) var notes: Set<Note>

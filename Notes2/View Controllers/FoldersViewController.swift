@@ -109,11 +109,19 @@ class FoldersViewController: UITableViewController, SegueHandler {
         
         switch segueIdentifier(for: segue){
         case .showNotes:
-            guard let navigationController = segue.destination as? UINavigationController,
-                let viewController = navigationController.viewControllers.first as? NotesViewController else {
+            guard let viewController = segue.destination as? NotesViewController else {
                     fatalError("Wrong view controller")
             }
+            guard let folder = dataSource?.selectedObject else {
+                fatalError("Wrong object type")
+            }
             viewController.managedObjectContext = managedObjectContext
+            viewController.notesSource = .folder(folder)
+        }
+        
+        // deselecting rows before segue
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selectedIndexPath, animated: true)
         }
     }
     

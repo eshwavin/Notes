@@ -8,10 +8,10 @@
             <fetchIndexElement property="dateCreated" type="Binary" order="ascending"/>
         </fetchIndex>
     </entity>
-    <entity name="Note" representedClassName="Note" syncable="YES">
+    <entity name="Note" representedClassName=".Note" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" defaultValueString=""/>
         <attribute name="dateModified" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="title" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="title" optional="YES" attributeType="String" defaultValueString="Untitled"/>
         <relationship name="folder" maxCount="1" deletionRule="Nullify" destinationEntity="Folder" inverseName="notes" inverseEntity="Folder"/>
         <fetchIndex name="bydateModifiedIndex">
             <fetchIndexElement property="dateModified" type="Binary" order="ascending"/>

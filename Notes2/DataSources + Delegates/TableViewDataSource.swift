@@ -31,6 +31,11 @@ class TableViewDataSource<Delegate: TableViewDataSourceDelegate>: NSObject, UITa
     
     // MARK: Objects
     
+    var selectedObject: Object? {
+        guard let indexPath = tableView?.indexPathForSelectedRow else { return nil }
+        return objectAtIndexPath(indexPath)
+    }
+    
     func objectAtIndexPath(_ indexPath: IndexPath) -> Object {
         return fetchedResultsController.object(at: indexPath)
     }

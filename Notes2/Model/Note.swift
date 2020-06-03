@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-final class Note: NSManagedObject {
+class Note: NSManagedObject {
     
     @NSManaged var content: String
     @NSManaged var dateModified: Date

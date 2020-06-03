@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="notesCell" id="ndj-3v-eSm">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="notesCell" id="ndj-3v-eSm" customClass="NotesTableViewCell" customModule="Notes2" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ndj-3v-eSm" id="zfp-3j-fbW">
@@ -42,8 +42,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gYA-sO-R4K"/>
                     </view>
-                    <navigationItem key="navigationItem" id="vTT-7s-Xua"/>
+                    <navigationItem key="navigationItem" id="vTT-7s-Xua">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="square.and.pencil" catalog="system" id="gvX-15-F36">
+                            <connections>
+                                <action selector="createNewNote:" destination="VNt-YC-Lc7" id="zxg-sQ-Kvr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="createNewNoteButton" destination="gvX-15-F36" id="ZBB-N3-uj4"/>
                         <outlet property="tableView" destination="PXf-am-kfG" id="vHz-pz-DSZ"/>
                     </connections>
                 </viewController>
@@ -51,10 +58,10 @@
             </objects>
             <point key="canvasLocation" x="1454" y="394"/>
         </scene>
-        <!--View Controller-->
+        <!--Note View Controller-->
         <scene sceneID="6nJ-6q-PNL">
             <objects>
-                <viewController id="IpU-pN-v8n" sceneMemberID="viewController">
+                <viewController id="IpU-pN-v8n" customClass="NoteViewController" customModule="Notes2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xce-pH-9i9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -65,9 +72,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h1m-m0-rtb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2377" y="394"/>
+            <point key="canvasLocation" x="428" y="910"/>
         </scene>
-        <!--Notes-->
+        <!--Folders-->
         <scene sceneID="xxq-UL-13O">
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="Pa2-Hq-Fif" customClass="FoldersViewController" customModule="Notes2" customModuleProvider="target" sceneMemberID="viewController">
@@ -84,7 +91,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="22w-ym-aI6" kind="show" identifier="showNotes" id="Th3-1O-kQi"/>
+                                    <segue destination="VNt-YC-Lc7" kind="show" identifier="showNotes" id="iPB-Ka-eIu"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -93,7 +100,7 @@
                             <outlet property="delegate" destination="Pa2-Hq-Fif" id="Wgc-NA-9g7"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Notes" id="6rH-K9-GmI">
+                    <navigationItem key="navigationItem" title="Folders" id="6rH-K9-GmI">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="ogc-En-mPR">
                             <connections>
                                 <action selector="addFolder:" destination="Pa2-Hq-Fif" id="S1S-Te-XQA"/>
@@ -127,37 +134,19 @@
                 <splitViewController presentsWithGesture="NO" id="sxJ-C9-Hrm" customClass="SplitViewController" customModule="Notes2" customModuleProvider="target" sceneMemberID="viewController">
                     <connections>
                         <segue destination="F9q-i3-fDK" kind="relationship" relationship="masterViewController" id="tCV-41-gal"/>
-                        <segue destination="22w-ym-aI6" kind="relationship" relationship="detailViewController" id="P3h-lb-bou"/>
+                        <segue destination="IpU-pN-v8n" kind="relationship" relationship="detailViewController" id="bRb-YG-v9b"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kBo-eG-5G6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-383" y="-75"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="a3o-Dg-4Px">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="22w-ym-aI6" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="V7P-xs-WAv"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CYU-TY-Xpb">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="VNt-YC-Lc7" kind="relationship" relationship="rootViewController" id="dnW-kx-exM"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IMT-7n-db1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="535" y="394"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Th3-1O-kQi"/>
+        <segue reference="bRb-YG-v9b"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="square.and.pencil" catalog="system" width="128" height="118"/>
     </resources>
 </document>
