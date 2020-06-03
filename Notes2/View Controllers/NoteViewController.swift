@@ -16,7 +16,7 @@ class NoteViewController: UIViewController {
         didSet {
             observer = ManagedObjectObserver(object: note) { [unowned self] type in
                 guard type == .delete else { return }
-                
+                self.invalidateView()
                 _ = self.navigationController?.popViewController(animated: true)
                 
             }
@@ -31,6 +31,10 @@ class NoteViewController: UIViewController {
     
     private func setupView() {
         title = note.title
+    }
+    
+    private func invalidateView() {
+        self.title = ""
     }
 
 }
